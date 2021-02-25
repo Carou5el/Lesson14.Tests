@@ -5,37 +5,32 @@ import org.junit.jupiter.api.Assertions;
 
 public class Main {
 
-    // Тестовый массив.
-    static int[] testArray = { 23,234, 234,123, 4, 32, 23 };
-    static int[] testArray1 = { 134,14,3,423,423,42,34,235,74,7,5,3,4,324,2342,34,234,234,34, 4 };
-    static int[] testArray2 = { 1,2,6,4,7,6,7,5,6,5,6 };
-    static int[] testArray3 = { 23, 4, 234,123, 32, 23 };
     static int[] resultArray;
+    static int[] testArray1 = { 134,14,3,423,423,42,34,235,74,7,5,3,4,324,2342,34,234,234,34, 4 };
 
     public static void main(String[] args) {
 
-//        checkArray(testArray);
         splitArray(testArray1, resultArray, checkArray(testArray1));
+
+        check1Or4Array(new int[] {1,1,1,1,1,1,1,4});
+
     }
 
-    @Test
-    public void testCheckArray()    {
-        Assertions.assertEquals(4, checkArray(testArray));
-    }
-    @Test
-    public void testCheckArray1()    {
-        Assertions.assertEquals(1, checkArray(testArray1));
+    public static boolean check1Or4Array(int[] checkArray) {
+
+        boolean result = true;
+
+        for (int num :
+                checkArray) {
+
+            if(!(num == 4 || num == 1)) {
+                result = false;
+            }
+        }
+
+        return result;
     }
 
-    @Test
-    public void testCheckArray2()    {
-        Assertions.assertEquals(3, checkArray(testArray2));
-    }
-
-    @Test
-    public void testCheckArray3()    {
-        Assertions.assertEquals(1, checkArray(testArray3));
-    }
 
     static int checkArray(int[] arrayToSplit) throws RuntimeException  {
 
